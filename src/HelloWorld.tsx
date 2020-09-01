@@ -7,7 +7,7 @@ export class HelloWorld extends React.Component {
 
   render() {
     return (
-      <button></button>
+      <button>HelloWorld</button>
     );
   }
 }

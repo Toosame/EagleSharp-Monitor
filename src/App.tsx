@@ -1,13 +1,19 @@
 import React from 'react';
+import { HelloWorld } from './HelloWorld'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+ class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
         Learn React
-      </header>
-    </div>
-  );
+        <HelloWorld />
+      </div>
+    );
+  }
 }
 
 export default App;
