@@ -4,7 +4,7 @@ import './Dashboard.scss';
 import { List } from '../List/List';
 import { Frames } from '../Frames/Frames';
 
-import { Chart } from '../../components/Chart/Chart';
+import { Charts } from '../../components/Charts/Charts';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -36,16 +36,16 @@ export class Dashboard extends React.Component {
 
             <div className="es-flex">
               <div className="es-flex-item">
-                <Chart title="CPU使用率"></Chart>
+                <Charts title="CPU使用率"></Charts>
               </div>
               <div className="es-flex-item">
-                <Chart title="CPU温度" />
+                <Charts title="CPU温度" />
               </div>
               <div className="es-flex-item">
-                <Chart title="内存使用率" />
+                <Charts title="内存使用率" />
               </div>
               <div className="es-flex-item">
-                <Chart title="储存空间" />
+                <Charts title="储存空间" />
               </div>
             </div>
           </div>
