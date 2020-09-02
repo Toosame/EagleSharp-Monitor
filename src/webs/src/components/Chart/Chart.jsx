@@ -9,13 +9,13 @@ export class Chart extends React.Component {
   }
 
   render() {
-    const { title } = this.props;
-
+    const { children, title } = this.props;
+    
     return (
-      <div className="chart-container">
+      <div className="chart-card">
         <div className="title">{title}</div>
         <div className="body">
-          图表
+          {children}
         </div>
       </div>
     );

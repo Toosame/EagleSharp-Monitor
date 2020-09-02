@@ -1,9 +1,10 @@
 import React from 'react';
+import './List.scss';
 
 export class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {};
   }
 
   render() {
@@ -11,14 +12,14 @@ export class List extends React.Component {
       <div>
         <div className="card-title">报警列表</div>
 
-        <ul>
-          <li>Information</li>
-          <li>Information</li>
-          <li>Information</li>
-          <li>Information</li>
-          <li>Information</li>
-          <li>Information</li>
-          <li>Information</li>
+        <ul className="list">
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
+          <li>Information Information Information</li>
         </ul>
       </div>
     );

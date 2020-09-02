@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
           <div>
             <List />
           </div>
-          <div>
+          <div className="frames">
             <Frames />
           </div>
           <div>
@@ -34,11 +34,19 @@ export class Dashboard extends React.Component {
           </div>
           <div style={{ gridColumn: "1 / 4" }}>
 
-            <div className="charts">
-              <Chart title="CPU使用率"/>
-              <Chart title="CPU温度"/>
-              <Chart title="内存使用率"/>
-              <Chart title="储存空间"/>
+            <div className="es-flex">
+              <div className="es-flex-item">
+                <Chart title="CPU使用率"></Chart>
+              </div>
+              <div className="es-flex-item">
+                <Chart title="CPU温度" />
+              </div>
+              <div className="es-flex-item">
+                <Chart title="内存使用率" />
+              </div>
+              <div className="es-flex-item">
+                <Chart title="储存空间" />
+              </div>
             </div>
           </div>
         </div>

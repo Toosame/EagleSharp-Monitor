@@ -1,20 +1,53 @@
 $class-prefix:'es';
 
 body {
-  // background: #0e0837;
+  background: #0a0e29;
+}
+
+.container {
+  padding: 0 15px;
 }
 
 .#{$class-prefix}-grid {
   display              : grid;
   grid-template-rows   : repeat(1, 100%);
   grid-template-columns: 1fr 2fr 1fr;
+  grid-gap             : 15px;
 
   >div {
-    border : 1px solid;
-    padding: 15px;
+    padding   : 15px;
+    background: #181c3a;
+
+    &:last-child {
+      padding    : 0;
+      background : none;
+      grid-column: 1 / 4;
+    }
   }
 }
 
-.charts {
+.#{$class-prefix}-flex {
   display: flex;
+
+  &-item {
+    flex: 1;
+
+
+    &:first-child {
+      >.chart-card {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      >.chart-card {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.card-title {
+  margin-bottom: 15px;
+  color        : #fff;
 }

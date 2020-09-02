@@ -1,6 +1,27 @@
-.chart-container {
+.chart-card {
   flex         : 1;
-  background   : #ddd;
-  border-radius: 2px;
+  border-radius: 4px;
+  margin       : 0 10px 10px 10px;
   padding      : 10px;
+  background   : #181c3a;
+  color        : #fff;
+
+  >.title {
+    font-size: 16px;
+
+    &::before {
+      content       : "";
+      width         : 5px;
+      height        : 5px;
+      display       : inline-block;
+      margin-right  : 5px;
+      border-radius : 2px;
+      vertical-align: middle;
+      background    : #fff;
+    }
+  }
+
+  >.body {
+    padding: 10px;
+  }
 }
