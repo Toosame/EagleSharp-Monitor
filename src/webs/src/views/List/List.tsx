@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export class List extends React.Component {
   constructor(props) {
@@ -8,7 +8,19 @@ export class List extends React.Component {
 
   render() {
     return (
-      <div>List</div>
+      <div>
+        <div className="card-title">报警列表</div>
+
+        <ul>
+          <li>Information</li>
+          <li>Information</li>
+          <li>Information</li>
+          <li>Information</li>
+          <li>Information</li>
+          <li>Information</li>
+          <li>Information</li>
+        </ul>
+      </div>
     );
   }
 }

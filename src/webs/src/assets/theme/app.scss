@@ -1,0 +1,20 @@
+$class-prefix:'es';
+
+body {
+  // background: #0e0837;
+}
+
+.#{$class-prefix}-grid {
+  display              : grid;
+  grid-template-rows   : repeat(1, 100%);
+  grid-template-columns: 1fr 2fr 1fr;
+
+  >div {
+    border : 1px solid;
+    padding: 15px;
+  }
+}
+
+.charts {
+  display: flex;
+}

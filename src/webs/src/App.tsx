@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home } from './views/Home/Home';
+import { Dashboard } from './views/Dashboard/Dashboard';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Home />
+      <Dashboard />
     );
   }
 }
