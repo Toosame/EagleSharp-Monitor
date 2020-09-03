@@ -297,7 +297,8 @@ module.exports = function (webpackEnv) {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
-        ...(modules.webpackAliases || {}),
+        '@components': path.resolve(__dirname, '../src/components/'),
+        ...(modules.webpackAliases || {})
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
