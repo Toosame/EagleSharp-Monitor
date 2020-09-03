@@ -4,7 +4,10 @@ import './Dashboard.scss';
 import { List } from '../List/List';
 import { Frames } from '../Frames/Frames';
 
-import { Charts } from '../../components/Charts/Charts';
+import { CpuUsageRate } from '@components/content/CpuUsageRate/CpuUsageRate';
+import { CpuTemperature } from '@components/content/CpuTemperature/CpuTemperature';
+import { MemoryStatus } from '@components/content/MemoryStatus/MemoryStatus';
+import { StorageSpace } from '@components/content/StorageSpace/StorageSpace';
 
 export class Dashboard extends React.Component {
   constructor(props) {
@@ -32,20 +35,19 @@ export class Dashboard extends React.Component {
               操作键盘
           </div>
           </div>
-          <div style={{ gridColumn: "1 / 4" }}>
-
+          <div>
             <div className="es-flex">
               <div className="es-flex-item">
-                <Charts title="CPU使用率"></Charts>
+                <CpuUsageRate />
               </div>
               <div className="es-flex-item">
-                <Charts title="CPU温度" />
+                <CpuTemperature />
               </div>
               <div className="es-flex-item">
-                <Charts title="内存使用率" />
+                <MemoryStatus />
               </div>
               <div className="es-flex-item">
-                <Charts title="储存空间" />
+                <StorageSpace />
               </div>
             </div>
           </div>

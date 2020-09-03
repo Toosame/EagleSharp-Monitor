@@ -1,14 +1,14 @@
 .chart-card {
   flex         : 1;
   border-radius: 4px;
-  margin       : 0 10px 10px 10px;
+  margin       : 0 15px 15px 15px;
   padding      : 10px;
   background   : #181c3a;
   color        : #fff;
 
   >.title {
-    margin-bottom: 25px;
-    font-size    : 16px;
+    padding  : 10px 12px;
+    font-size: 16px;
 
     &::before {
       content       : "";

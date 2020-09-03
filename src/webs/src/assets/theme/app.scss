@@ -1,18 +1,24 @@
 $class-prefix:'es';
 
+* {
+  margin    : 0;
+  padding   : 0;
+  box-sizing: border-box;
+}
+
 body {
   background: #0a0e29;
 }
 
 .container {
-  padding: 0 15px;
+  padding: 0 30px;
 }
 
 .#{$class-prefix}-grid {
   display              : grid;
-  grid-template-rows   : repeat(1, 100%);
+  grid-template-rows   : repeat(1, 50%);
   grid-template-columns: 1fr 2fr 1fr;
-  grid-gap             : 15px;
+  grid-gap             : 30px;
 
   >div {
     padding   : 15px;
