@@ -1,4 +1,4 @@
-$class-prefix:'es';
+@import './default.scss';
 
 * {
   margin    : 0;
@@ -11,25 +11,7 @@ body {
 }
 
 .container {
-  padding: 0 30px;
-}
-
-.#{$class-prefix}-grid {
-  display              : grid;
-  grid-template-rows   : repeat(1, 50%);
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-gap             : 30px;
-
-  >div {
-    padding   : 15px;
-    background: #181c3a;
-
-    &:last-child {
-      padding    : 0;
-      background : none;
-      grid-column: 1 / 4;
-    }
-  }
+  padding: 30px;
 }
 
 .#{$class-prefix}-flex {

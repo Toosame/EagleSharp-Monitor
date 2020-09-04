@@ -30,26 +30,21 @@ export class Dashboard extends React.Component {
               <div>摄像头</div>
               <div>散热器</div>
             </div>
-
             <div>
               操作键盘
-          </div>
+            </div>
           </div>
           <div>
-            <div className="es-flex">
-              <div className="es-flex-item">
-                <CpuUsageRate />
-              </div>
-              <div className="es-flex-item">
-                <CpuTemperature />
-              </div>
-              <div className="es-flex-item">
-                <MemoryStatus />
-              </div>
-              <div className="es-flex-item">
-                <StorageSpace />
-              </div>
-            </div>
+            <CpuUsageRate />
+          </div>
+          <div>
+            <CpuTemperature />
+          </div>
+          <div>
+            <MemoryStatus />
+          </div>
+          <div>
+            <StorageSpace />
           </div>
         </div>
       </div>

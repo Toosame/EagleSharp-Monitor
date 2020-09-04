@@ -17,7 +17,7 @@ export class StorageSpace extends React.Component {
         value: 128,
       },
       {
-        type: '已用',
+        type: '已用空间',
         value: 286,
       }
     ];

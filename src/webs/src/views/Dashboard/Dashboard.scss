@@ -1,4 +1,23 @@
+// @import '/src/assets/theme/default.scss';
+
+.es-grid {
+  display              : grid;
+  grid-template-rows   : 50vh calc(50vh - 66px); // 这个120px是这个类里的grid-gap间隔和其它边距的和
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap             : 2px;
+  grid-template-areas  :
+    "header header header"
+    "main main sidebar"
+    "footer footer footer";
+
+  >div {
+    // padding   : 15px;
+    background: #181c3a;
+  }
+}
+
 .frames {
   display        : flex;
   justify-content: center;
+  grid-column    : 2 / 4;
 }

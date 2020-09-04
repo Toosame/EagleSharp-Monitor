@@ -46,13 +46,13 @@ export class CpuTemperature extends React.Component {
 
     return (
       <ChartCard title="CPU温度">
-        <Chart data={data} {...chartConfig}>
-          <LineAdvance {...lineAdvanceConfig} />
-          <Axis name="time" />
-          <Axis name="rate" />
-          <Tooltip title="使用率" />
+        <Chart data={data} {...chartConfig} autoFit padding={[10, 30, 40, 30]}>
+        <LineAdvance {...lineAdvanceConfig} />
+        <Axis name="time" />
+        <Axis name="rate" />
+        <Tooltip title="使用率" />
         </Chart>
-      </ChartCard>
+      </ChartCard >
     );
   }
 }

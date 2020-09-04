@@ -45,7 +45,7 @@ export class MemoryStatus extends React.Component {
 
     return (
       <ChartCard title="内存">
-        <Chart data={data} {...chartConfig}>
+        <Chart data={data} {...chartConfig} autoFit padding={[10, 30, 40, 30]}>
           <LineAdvance {...lineAdvanceConfig} />
           <Axis name="time" />
           <Axis name="rate" />

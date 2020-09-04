@@ -1,25 +1,22 @@
 .chart-card {
-  flex         : 1;
-  border-radius: 4px;
-  margin       : 0 15px 15px 15px;
-  padding      : 10px;
   background   : #181c3a;
   color        : #fff;
+  height       : 100%;
 
   >.title {
     padding  : 10px 12px;
-    font-size: 16px;
+    font-size: 18px;
 
-    &::before {
-      content       : "";
-      width         : 5px;
-      height        : 5px;
-      display       : inline-block;
-      margin-right  : 5px;
-      border-radius : 2px;
-      vertical-align: middle;
-      background    : #fff;
-    }
+    // &::before {
+    //   content       : "";
+    //   width         : 5px;
+    //   height        : 5px;
+    //   display       : inline-block;
+    //   margin-right  : 5px;
+    //   border-radius : 2px;
+    //   vertical-align: middle;
+    //   background    : #fff;
+    // }
   }
 
   >.body {
