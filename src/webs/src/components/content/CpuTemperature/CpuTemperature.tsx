@@ -1,7 +1,7 @@
 import React from 'react';
 import { Chart, LineAdvance, Axis, Tooltip } from 'bizcharts';
 import { ChartCard } from '@components/common/ChartCard/ChartCard';
-import { homeChartConfig } from '../config';
+import { chartCommonConfig, lineAdvCommonConfig } from '../config';
 
 export class CpuTemperature extends React.Component {
   constructor(props) {
@@ -24,8 +24,7 @@ export class CpuTemperature extends React.Component {
     ];
 
     const chartConfig = {
-      height: 200,
-      autoFit: true,
+      ...chartCommonConfig,
       scale: {
         time: {
           alias: '时间',
@@ -39,18 +38,18 @@ export class CpuTemperature extends React.Component {
     };
 
     const lineAdvanceConfig = {
-      ...homeChartConfig,
+      ...lineAdvCommonConfig,
       position: "time*rate",
       color: "#B53471"
     };
 
     return (
       <ChartCard title="CPU温度">
-        <Chart data={data} {...chartConfig} autoFit padding={[10, 30, 40, 30]}>
-        <LineAdvance {...lineAdvanceConfig} />
-        <Axis name="time" />
-        <Axis name="rate" />
-        <Tooltip title="使用率" />
+        <Chart data={data} {...chartConfig}>
+          <LineAdvance {...lineAdvanceConfig} />
+          <Axis name="time" />
+          <Axis name="rate" />
+          <Tooltip title="使用率" />
         </Chart>
       </ChartCard >
     );
