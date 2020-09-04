@@ -24,7 +24,7 @@ export class StorageSpace extends React.Component {
 
     return (
       <ChartCard title="存储空间">
-        <Chart data={data} height={200} autoFit>
+        <Chart data={data} height={240} autoFit>
           <Coordinate type="theta" radius={0.8} innerRadius={0} />
           <Axis visible={false} />
           <Tooltip showTitle={false} />
