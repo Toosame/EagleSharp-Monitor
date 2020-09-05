@@ -1,8 +1,6 @@
-import React, { createElement } from 'react';
-// import { Chart, LineAdvance, Axis, Tooltip } from 'bizcharts';
-import { DonutChart, Chart, Coordinate, Interval, Axis, Tooltip } from 'bizcharts';
+import React  from 'react';
+import { Chart, Coordinate, Interval, Axis, Tooltip } from 'bizcharts';
 import { ChartCard } from '@components/common/ChartCard/ChartCard';
-// import { homeChartConfig } from '../config';
 
 export class StorageSpace extends React.Component {
   constructor(props) {

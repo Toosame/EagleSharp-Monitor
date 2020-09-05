@@ -10,7 +10,7 @@ export class List extends React.Component {
   render() {
     return (
       <div>
-        <div className="card-title">报警列表</div>
+        <div className="card-title theme-title">报警列表</div>
 
         <ul className="list">
           <li>Information Information Information</li>

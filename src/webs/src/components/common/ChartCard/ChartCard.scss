@@ -1,23 +1,12 @@
 .chart-card {
-  background: #181c3a;
-  color     : #fff;
-  width     : 100%;
-  height    : 100%;
+  width : 100%;
+  height: 100%;
+
 
   >.title {
     padding  : 10px 12px;
     font-size: 18px;
-
-    // &::before {
-    //   content       : "";
-    //   width         : 5px;
-    //   height        : 5px;
-    //   display       : inline-block;
-    //   margin-right  : 5px;
-    //   border-radius : 2px;
-    //   vertical-align: middle;
-    //   background    : #fff;
-    // }
+    color    : var(--theme-color);
   }
 
   >.body {
