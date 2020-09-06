@@ -1,0 +1,8 @@
+.header {
+  display         : flex;
+  justify-content : flex-end;
+  align-items     : center;
+  height          : 36px;
+  background-color: var(--theme-background-color);
+  color: var(--theme-color);
+}

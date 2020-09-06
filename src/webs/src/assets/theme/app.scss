@@ -6,8 +6,16 @@
   box-sizing: border-box;
 }
 
+:root {
+  --theme-body-bgcolor    : #22252a;
+
+  --theme-background-color: #000;
+  --theme-color           : #16dad3;
+}
+
 body {
-  background: #0a0e29;
+  background: var(--theme-body-bgcolor);
+  overflow  : hidden;
 }
 
 .container {
@@ -37,5 +45,4 @@ body {
 
 .card-title {
   margin-bottom: 15px;
-  color        : #fff;
 }

@@ -20,7 +20,7 @@ export class ChartCard extends React.Component<IProps, IState> {
     const { title, children } = this.props;
 
     return (
-      <div className="chart-card" >
+      <div className="chart-card">
         <div className="title">{title}</div>
         <div className="body">
           {children}

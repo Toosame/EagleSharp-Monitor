@@ -2,17 +2,16 @@
 
 .es-grid {
   display              : grid;
-  grid-template-rows   : calc(100vh - 324px) 300px;
+  grid-template-rows   : calc(100vh - 366px) 300px;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap             : 2px;
+  grid-gap             : 10px;
   grid-template-areas  :
     "header header header"
     "main main sidebar"
     "footer footer footer";
 
   >div {
-    // padding   : 15px;
-    background: #181c3a;
+    background: var(--theme-background-color);
   }
 }
 
