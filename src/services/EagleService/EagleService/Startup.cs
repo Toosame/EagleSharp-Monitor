@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using EagleService.HostedServices;
+using EagleService.Hubs;
 using EagleService.Infrastructure;
 
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +36,7 @@ namespace EagleService
 
             services.AddHostedService<VideoBroadcastHostedService>();
             services.AddHostedService<VideoReceiveHostedService>();
+            services.AddHostedService<MockMonitorHostedService>();
 
             services.AddCors(setup =>
             {
@@ -43,7 +46,7 @@ namespace EagleService
                     .Build());
             });
 
-            services.AddControllers();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +66,11 @@ namespace EagleService
             {
                 if (context.Request.Path.StartsWithSegments("/videoStreaming"))
                 {
+                    var logger = context.RequestServices.GetRequiredService<ILogger<Startup>>();
+
+                    logger.LogInformation("Clinet: {ClientIp} start play video streaming...",
+                        context.Connection.RemoteIpAddress);
+
                     context.Response.StatusCode = 200;
                     context.Response.ContentType = "multipart/x-mixed-replace; boundary=frame";
 
@@ -73,7 +81,13 @@ namespace EagleService
                         await context.Response.BodyWriter.WriteAsync(new ReadOnlyMemory<byte>(frame));
                     });
 
+                    logger.LogInformation("Clinet: {ClientIp} subscribed video streaming.",
+                        context.Connection.RemoteIpAddress);
+
                     context.RequestAborted.WaitHandle.WaitOne();
+
+                    logger.LogInformation("Clinet: {ClientIp} was lost, ready unsubscribe...",
+                        context.Connection.RemoteIpAddress);
 
                     broadcast.Unsubscribe(context.Connection.Id);
                 }
@@ -83,7 +97,7 @@ namespace EagleService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapHub<MonitorHub>("/monitor");
             });
         }
     }
