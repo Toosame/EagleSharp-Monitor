@@ -36,7 +36,6 @@ namespace EagleService
 
             services.AddHostedService<VideoBroadcastHostedService>();
             services.AddHostedService<VideoReceiveHostedService>();
-            services.AddHostedService<MockMonitorHostedService>();
 
             services.AddCors(setup =>
             {
