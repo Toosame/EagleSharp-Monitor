@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using System;
@@ -10,17 +11,18 @@ namespace EagleClient.Infrastructure.Services.Monitor
 {
     public class SignalRMonitorServer : IMonitorServer
     {
-        private object locker = new object();
-        System.Threading.SemaphoreSlim semaphore;
-
+        private readonly System.Threading.SemaphoreSlim _semaphore;
+        private readonly ILogger<SignalRMonitorServer> _logger;
         private readonly SignalROption _options;
         private readonly HubConnection _connection;
 
         private IDisposable onUpdateRocker;
 
-        public SignalRMonitorServer(IOptions<SignalROption> options)
+        public SignalRMonitorServer(IOptions<SignalROption> options,
+            ILogger<SignalRMonitorServer> logger)
         {
-            semaphore = new System.Threading.SemaphoreSlim(1);
+            _semaphore = new System.Threading.SemaphoreSlim(1);
+            _logger = logger;
             _options = options.Value;
             _connection = new HubConnectionBuilder()
                 .WithUrl(_options.ServerUrl)
@@ -39,39 +41,43 @@ namespace EagleClient.Infrastructure.Services.Monitor
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateCPUTemperature");
+            await _connection.SendAsync("UpdateCPUTemperature", time, unit, value);
         }
 
         public async Task UpdateCPUUsedAsync(DateTime time, string unit, double value)
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateCPUUsed");
+            await _connection.SendAsync("UpdateCPUUsed", unit, value);
         }
 
         public async Task UpdateDiskUsedAsync(string unit, double used, double free)
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateDiskUsed");
+            await _connection.SendAsync("UpdateDiskUsed", used, free);
         }
 
         public async Task UpdateMemoryUsedAsync(DateTime time, string unit, double value)
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateMemoryUsed");
+            await _connection.SendAsync("UpdateMemoryUsed", unit, value);
         }
 
         private async Task EnsureConnectionStared()
         {
-            await semaphore.WaitAsync();
+            await _semaphore.WaitAsync();
 
             if (_connection.State == HubConnectionState.Disconnected)
             {
+                _logger.LogInformation("Ready connection to {ServerUrl}.", _options.ServerUrl);
+
                 await _connection.StartAsync();
 
-                semaphore.Release();
+                _logger.LogInformation("Connectioned to EagleService.");
+
+                _semaphore.Release();
             }
         }
 

@@ -14,7 +14,7 @@ namespace EagleClient.Infrastructure.Services.Device
         public async Task<CPUInfo> GetCPUInfoAsync()
         {
             IEnumerable<string> procStat = await File.ReadAllLinesAsync("/proc/stat");
-            if (procStat == default || procStat.Any())
+            if (procStat == default || !procStat.Any())
                 throw new ReadDeviceInfoException("Cannt get CPU info.");
 
             string temp = await File.ReadAllTextAsync("/sys/class/thermal/thermal_zone0/temp");

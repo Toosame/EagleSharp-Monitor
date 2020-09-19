@@ -17,12 +17,12 @@ namespace EagleClient.Workers
 {
     public class StateUploadWorker : IHostedService, IDisposable
     {
-        private readonly ServiceProvider _serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<StateUploadWorker> _logger;
 
         private Timer timer;
 
-        public StateUploadWorker(ServiceProvider serviceProvider, ILogger<StateUploadWorker> logger)
+        public StateUploadWorker(IServiceProvider serviceProvider, ILogger<StateUploadWorker> logger)
         {
             _serviceProvider = serviceProvider;
             _logger = logger;
