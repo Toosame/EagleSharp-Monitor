@@ -33,7 +33,7 @@ namespace EagleClient.Workers
             _logger.LogInformation("State Upload Hosted Service running.");
 
             timer = new Timer(DoWork, null, TimeSpan.Zero,
-                TimeSpan.FromSeconds(1.2));
+                TimeSpan.FromSeconds(2));
 
             return Task.CompletedTask;
         }
@@ -50,12 +50,18 @@ namespace EagleClient.Workers
             //Get CPU info
             var cpuInfo = await deviceInfoService.GetCPUInfoAsync();
 
-            await monitorServer.UpdateCPUTemperatureAsync(time, cpuInfo.TempUnit, cpuInfo.Temp);
             await monitorServer.UpdateCPUUsedAsync(time, cpuInfo.UsedUnit, cpuInfo.Used);
+            await monitorServer.UpdateCPUTemperatureAsync(time, cpuInfo.TempUnit, cpuInfo.Temp);
+
+            //_logger.LogInformation("Got cpu used info: {CPUUsed}{CPUUsedUnit}",
+            //   cpuInfo.Used, cpuInfo.UsedUnit);
 
             //Get memory info
             var memInfo = await deviceInfoService.GetMemoryInfoAsync();
             await monitorServer.UpdateMemoryUsedAsync(time, "%", Math.Round((memInfo.Used / memInfo.Total) * 100, 2));
+
+            //_logger.LogInformation("Got mem info: {MemUsed}{MemTotalUnit} / {MemTotal}{MemTotalUnit}",
+            //   memInfo.Used, memInfo.Unit, memInfo.Total, memInfo.Unit);
 
             //Get disk info
             if (time.Minute % 20 == 0)

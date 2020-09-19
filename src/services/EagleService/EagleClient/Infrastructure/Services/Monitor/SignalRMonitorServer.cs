@@ -48,29 +48,29 @@ namespace EagleClient.Infrastructure.Services.Monitor
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateCPUUsed", unit, value);
+            await _connection.SendAsync("UpdateCPUUsed", time, unit, value);
         }
 
         public async Task UpdateDiskUsedAsync(string unit, double used, double free)
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateDiskUsed", used, free);
+            await _connection.SendAsync("UpdateDiskUsed", unit, used, free);
         }
 
         public async Task UpdateMemoryUsedAsync(DateTime time, string unit, double value)
         {
             await EnsureConnectionStared();
 
-            await _connection.SendAsync("UpdateMemoryUsed", unit, value);
+            await _connection.SendAsync("UpdateMemoryUsed", time, unit, value);
         }
 
         private async Task EnsureConnectionStared()
         {
-            await _semaphore.WaitAsync();
-
             if (_connection.State == HubConnectionState.Disconnected)
             {
+                await _semaphore.WaitAsync();
+
                 _logger.LogInformation("Ready connection to {ServerUrl}.", _options.ServerUrl);
 
                 await _connection.StartAsync();

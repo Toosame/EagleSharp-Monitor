@@ -41,7 +41,10 @@ namespace EagleService
             {
                 setup.AddDefaultPolicy(
                     new CorsPolicyBuilder()
-                    .AllowAnyOrigin()
+                    .SetIsOriginAllowed(p => true)
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
                     .Build());
             });
 
